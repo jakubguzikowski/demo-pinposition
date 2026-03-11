@@ -1,0 +1,11 @@
+# Wszystkie pliki tekstowe automatycznie konwertowane
+* text=auto
+
+# Specyficzne rozszerzenia używane w React + Vite
+*.js text
+*.ts text
+*.tsx text
+*.json text
+*.scss text
+*.css text
+*.html text

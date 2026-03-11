@@ -1,0 +1,20 @@
+# Ignoruj katalogi build / dist / deps
+coverage/
+node_modules/
+
+# Ignoruj logi, tymczasowe i locki
+*.log
+# Ignoruj pliki konfiguracji wygenerowane przez systemy buildów
+package-lock.json
+pnpm-lock.yaml
+
+# Ignoruj pliki outputowe (np. raporty)
+*.snap
+# Ignoruj inne foldery devtools (opcjonalnie)
+.vscode/
+.idea/
+
+# Ignoruj statyczne zasoby, jeśli nie chcesz ich formatować
+public/
+static/
+assets/
