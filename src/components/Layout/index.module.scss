@@ -1,15 +1,4 @@
 .application {
-    display : block;
-
-    .header {
-        display : block;
-    }
-
-    .navigation {
-        display : block;
-    }
-
-    .page {
-        display : block;
-    }
+    display            : grid;
+    grid-template-rows : auto 1fr;
 }

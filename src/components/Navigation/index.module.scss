@@ -1,0 +1,22 @@
+.navigation {
+    display         : flex;
+    justify-content : space-around;
+    gap             : 1px;
+    background      : #F1F1F1;
+
+    button {
+        all             : unset;
+        display         : flex;
+        align-items     : center;
+        justify-content : center;
+        flex            : 1;
+        background      : #FAFAFA;
+        color           : #646464;
+        font-weight     : 500;
+        padding         : 1.2rem .6rem;
+
+        &:hover, &.active {
+            color : #232323;
+        }
+    }
+}

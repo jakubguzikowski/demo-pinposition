@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Dashboard from "./pages/Dashboard";
 import Greens from "./pages/Greens";
-import Generate from "./pages/Generate";
+import Pins from "./pages/Pins";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Route element={<Layout />}>
         <Route path="/" element={<Dashboard />} />
         <Route path="/greens" element={<Greens />} />
-        <Route path="/generate" element={<Generate />} />
+        <Route path="/pins" element={<Pins />} />
       </Route>
     </Routes>
   );
