@@ -1,22 +1,32 @@
 .navigation {
     display         : flex;
-    justify-content : space-around;
-    gap             : 1px;
-    background      : #F1F1F1;
+    justify-content : space-between;
+    align-items     : center;
+    padding         : var(--padding-outer);
 
-    button {
+    .nav_button {
         all             : unset;
         display         : flex;
         align-items     : center;
         justify-content : center;
-        flex            : 1;
-        background      : #FAFAFA;
-        color           : #646464;
+        color           : var(--text);
+        font-size       : .9rem;
         font-weight     : 500;
-        padding         : 1.2rem .6rem;
+        cursor          : pointer;
+        transition      : color 250ms var(--transition), background 250ms var(--transition);
 
         &:hover, &.active {
-            color : #232323;
+            color : var(--text-active);
         }
+    }
+
+    .theme_button {
+        all             : unset;
+        display         : flex;
+        align-items     : center;
+        justify-content : center;
+        color           : var(--text);
+        cursor          : pointer;
+        transition      : color 250ms var(--transition), background 250ms var(--transition);
     }
 }

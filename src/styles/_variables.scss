@@ -1,0 +1,52 @@
+:root {
+    // Kolory bazowe (paleta)
+    --light-bg-primary     : #FAFAFA;
+    --light-bg-secondary   : #EAEAEA;
+    --light-bg-tertiary    : #DCDCDC;
+    --light-text-primary   : #808080;
+    --light-text-secondary : #1A1A1A;
+
+    --dark-bg-primary      : #1A1A1A;
+    --dark-bg-secondary    : #212121;
+    --dark-bg-tertiary     : #2A2A2A;
+    --dark-text-primary    : #AFAFAF;
+    --dark-text-secondary  : #FAFAFA;
+
+    --padding-outer        : .6rem 1.8rem;
+    --padding-wrapper      : .6rem .9rem;
+    --padding-inner        : .9rem;
+
+    --transition           : cubic-bezier(.6, .1, .4, .9);
+
+    // Kolory semantyczne (co robią)
+    --bg                   : var(--light-bg-primary);
+    --border               : var(--light-bg-secondary);
+    --text                 : var(--light-text-primary);
+    --text-active          : var(--light-text-secondary);
+
+    // Typografia
+    --font-size-sm         : 0.875rem;
+    --font-size-md         : 1rem;
+    --font-size-lg         : 1.25rem;
+    --font-weight-regular  : 400;
+    --font-weight-bold     : 700;
+
+    // Spacing
+    --space-xs             : 4px;
+    --space-sm             : 8px;
+    --space-md             : 16px;
+    --space-lg             : 24px;
+    --space-xl             : 32px;
+
+    // Border
+    --radius-sm            : 4px;
+    --radius-md            : 8px;
+    --border-color         : var(--clr-neutral-100);
+}
+
+[data-theme="dark"] {
+    --bg          : var(--dark-bg-primary);
+    --border      : var(--dark-bg-secondary);
+    --text        : var(--dark-text-primary);
+    --text-active : var(--dark-text-secondary);
+}

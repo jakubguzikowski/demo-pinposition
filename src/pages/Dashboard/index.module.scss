@@ -1,3 +1,45 @@
 .page {
-    display : block;
+    display        : flex;
+    flex-direction : column;
+    gap            : .9rem;
+    padding        : var(--padding-wrapper);
+
+
+    .list {
+        display        : flex;
+        flex-direction : column;
+        gap            : .6rem;
+        padding        : var(--padding-inner);
+        background     : var(--border);
+        border-radius  : .6rem;
+        transition     : background 250ms var(--transition);
+
+        .title {
+            color      : var(--text-active);
+            transition : color 250ms var(--transition);
+        }
+
+        .item {
+            display : flex;
+            gap     : .6rem;
+
+            svg {
+                color      : var(--text);
+                transition : color 250ms var(--transition);
+            }
+
+            p {
+                color      : var(--text);
+                transition : color 250ms var(--transition);
+            }
+        }
+    }
+}
+
+.todo {
+    fill : darkorange;
+}
+
+.done {
+    fill : yellowgreen;
 }
