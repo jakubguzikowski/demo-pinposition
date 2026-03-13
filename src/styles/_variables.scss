@@ -12,9 +12,16 @@
     --dark-text-primary    : #AFAFAF;
     --dark-text-secondary  : #FAFAFA;
 
-    --padding-outer        : .6rem 1.8rem;
-    --padding-wrapper      : .6rem .9rem;
-    --padding-inner        : .9rem;
+    --font-size-primary    : 1rem;
+    --font-size-secondary  : .9rem;
+
+    --padding-primary      : 1.6rem 1.8rem;
+    --padding-secondary    : 1.6rem .9rem;
+    --padding-tertiary     : .9rem;
+    --gap-primary          : .9rem;
+    --gap-secondary        : .6rem;
+    --gap-tertiary         : .3rem;
+    --radius-primary       : .6rem;
 
     --transition           : cubic-bezier(.6, .1, .4, .9);
 
@@ -23,25 +30,6 @@
     --border               : var(--light-bg-secondary);
     --text                 : var(--light-text-primary);
     --text-active          : var(--light-text-secondary);
-
-    // Typografia
-    --font-size-sm         : 0.875rem;
-    --font-size-md         : 1rem;
-    --font-size-lg         : 1.25rem;
-    --font-weight-regular  : 400;
-    --font-weight-bold     : 700;
-
-    // Spacing
-    --space-xs             : 4px;
-    --space-sm             : 8px;
-    --space-md             : 16px;
-    --space-lg             : 24px;
-    --space-xl             : 32px;
-
-    // Border
-    --radius-sm            : 4px;
-    --radius-md            : 8px;
-    --border-color         : var(--clr-neutral-100);
 }
 
 [data-theme="dark"] {

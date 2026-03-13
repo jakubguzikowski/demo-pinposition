@@ -1,27 +1,30 @@
 .page {
     display        : flex;
     flex-direction : column;
-    gap            : .9rem;
-    padding        : var(--padding-wrapper);
+    gap            : var(--gap-primary);
+    padding        : var(--padding-secondary);
+    padding-top    : 0;
 
 
     .list {
         display        : flex;
         flex-direction : column;
-        gap            : .6rem;
-        padding        : var(--padding-inner);
+        gap            : var(--gap-secondary);
+        padding        : var(--padding-tertiary);
         background     : var(--border);
-        border-radius  : .6rem;
+        border-radius  : var(--radius-primary);
         transition     : background 250ms var(--transition);
 
         .title {
-            color      : var(--text-active);
-            transition : color 250ms var(--transition);
+            color          : var(--text-active);
+            font-size      : var(--font-size-secondary);
+            padding-bottom : var(--gap-tertiary);
+            transition     : color 250ms var(--transition);
         }
 
         .item {
             display : flex;
-            gap     : .6rem;
+            gap     : var(--gap-secondary);
 
             svg {
                 color      : var(--text);
@@ -30,6 +33,7 @@
 
             p {
                 color      : var(--text);
+                font-size  : var(--font-size-secondary);
                 transition : color 250ms var(--transition);
             }
         }

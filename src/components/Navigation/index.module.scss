@@ -2,7 +2,7 @@
     display         : flex;
     justify-content : space-between;
     align-items     : center;
-    padding         : var(--padding-outer);
+    padding         : var(--padding-primary);
 
     .nav_button {
         all             : unset;
@@ -10,7 +10,7 @@
         align-items     : center;
         justify-content : center;
         color           : var(--text);
-        font-size       : .9rem;
+        font-size       : var(--font-size-secondary);
         font-weight     : 500;
         cursor          : pointer;
         transition      : color 250ms var(--transition), background 250ms var(--transition);
