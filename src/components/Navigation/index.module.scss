@@ -1,8 +1,11 @@
+@use "../../styles/breakpoints";
+
 .navigation {
-    display         : flex;
-    justify-content : space-between;
-    align-items     : center;
-    padding         : var(--padding-primary);
+    display     : flex;
+    align-items : center;
+    flex        : 1;
+    gap         : var(--gap-primary);
+    position    : relative;
 
     .nav_button {
         all             : unset;
@@ -13,20 +16,29 @@
         font-size       : var(--font-size-secondary);
         font-weight     : 500;
         cursor          : pointer;
-        transition      : color 250ms var(--transition), background 250ms var(--transition);
+        padding         : var(--padding-tertiary);
+        transition      : color 250ms var(--transition);
+        z-index         : 999;
 
-        &:hover, &.active {
+        @include breakpoints.up(desktop) {
+
+            &:hover {
+                color : var(--text-active);
+            }
+        }
+
+        &.active {
             color : var(--text-active);
         }
     }
 
-    .theme_button {
-        all             : unset;
-        display         : flex;
-        align-items     : center;
-        justify-content : center;
-        color           : var(--text);
-        cursor          : pointer;
-        transition      : color 250ms var(--transition), background 250ms var(--transition);
+    .indicator {
+        position       : absolute;
+        height         : 100%;
+        background     : var(--border);
+        border-radius  : var(--radius-primary);
+        transition     : left 250ms var(--transition), width 250ms var(--transition), background 250ms var(--transition);
+        pointer-events : none;
+        z-index        : 998;
     }
 }

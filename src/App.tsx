@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Dashboard from "./pages/Dashboard";
 import Greens from "./pages/Greens";
-import Pins from "./pages/Pins";
+import Tournaments from "./pages/Tournaments";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Route element={<Layout />}>
         <Route path="/" element={<Dashboard />} />
         <Route path="/greens" element={<Greens />} />
-        <Route path="/pins" element={<Pins />} />
+        <Route path="/tournaments" element={<Tournaments />} />
       </Route>
     </Routes>
   );

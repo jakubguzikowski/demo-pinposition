@@ -1,14 +1,28 @@
 @use "variables";
 
 * {
-    margin     : 0;
-    padding    : 0;
-    box-sizing : border-box;
-    -webkit-tap-highlight-color: transparent;
+    margin                      : 0;
+    padding                     : 0;
+    box-sizing                  : border-box;
+    -webkit-tap-highlight-color : transparent;
 }
 
 body {
     font-family : "Inter", sans-serif;
     background  : var(--bg);
     transition  : background 250ms var(--transition);
+}
+
+.title {
+    color       : var(--text-active);
+    font-size   : var(--font-size-secondary);
+    font-weight : 600;
+    transition  : color 250ms var(--transition);
+}
+
+.paragraph {
+    color       : var(--text-active);
+    font-size   : var(--font-size-secondary);
+    font-weight : 400;
+    transition  : color 250ms var(--transition);
 }

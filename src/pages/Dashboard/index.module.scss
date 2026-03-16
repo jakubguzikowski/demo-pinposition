@@ -1,3 +1,5 @@
+@use "../../styles/breakpoints";
+
 .page {
     display        : flex;
     flex-direction : column;
@@ -5,6 +7,16 @@
     padding        : var(--padding-secondary);
     padding-top    : 0;
 
+    @include breakpoints.up(desktop) {
+        flex-direction : row;
+    }
+
+    .list_group {
+        display        : flex;
+        flex-direction : column;
+        gap            : var(--gap-primary);
+        flex           : 1;
+    }
 
     .list {
         display        : flex;
@@ -15,10 +27,16 @@
         border-radius  : var(--radius-primary);
         transition     : background 250ms var(--transition);
 
+        @include breakpoints.up(desktop) {
+            flex   : 1;
+            height : min-content;
+        }
+
         .title {
             color          : var(--text-active);
             font-size      : var(--font-size-secondary);
             padding-bottom : var(--gap-tertiary);
+            font-weight    : 600;
             transition     : color 250ms var(--transition);
         }
 
