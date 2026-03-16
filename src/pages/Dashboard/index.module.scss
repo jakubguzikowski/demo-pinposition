@@ -59,9 +59,9 @@
 }
 
 .todo {
-    fill : darkorange;
+    fill : var(--orange);
 }
 
 .done {
-    fill : yellowgreen;
+    fill : var(--green);
 }

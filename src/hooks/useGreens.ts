@@ -1,7 +1,7 @@
 import { greens } from "../data/greens";
 import { greenSvgs, GreenSvgComponent } from "../assets/greens";
 
-interface GreenWithSvg {
+export interface GreenWithSvg {
   id: number;
   name: string;
   width: number;

@@ -16,6 +16,15 @@
         border-radius   : var(--radius-primary);
         background      : var(--border);
         transition      : background 250ms var(--transition);
+
+        .label {
+            color      : var(--text);
+            transition : color 250ms var(--transition);
+        }
+
+        .value {
+            font-weight : 600;
+        }
     }
 
     .wrapper {
