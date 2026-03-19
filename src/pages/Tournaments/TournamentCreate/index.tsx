@@ -1,6 +1,7 @@
 import styles from "./index.module.scss";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { CalendarIcon } from "@phosphor-icons/react";
 import { greens } from "../../../data/greens";
 import { greenSvgs } from "../../../assets/greens";
 import { generatePinPositions } from "../../../utils/generatePinPositions";
@@ -31,7 +32,13 @@ export default function TournamentCreate() {
   };
 
   const handleCreate = () => {
-    if (!name || !startDate || !endDate || pins.length === 0) return;
+    if (
+      !name ||
+      !startDate ||
+      !endDate ||
+      pins.filter(Boolean).length !== greens.length
+    )
+      return;
     add({
       id: crypto.randomUUID(),
       name,
@@ -46,23 +53,35 @@ export default function TournamentCreate() {
   return (
     <main className={styles.page}>
       <div className={styles.inputs}>
-        <input
-          placeholder="Tournament name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <input
-          placeholder="Start date (YYYY-MM-DD)"
-          value={startDate}
-          maxLength={10}
-          onChange={(e) => setStartDate(formatDateInput(e.target.value))}
-        />
-        <input
-          placeholder="End date (YYYY-MM-DD)"
-          value={endDate}
-          maxLength={10}
-          onChange={(e) => setEndDate(formatDateInput(e.target.value))}
-        />
+        <div className="field">
+          <input
+            className="input"
+            placeholder=" "
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <label className="label">Nazwa turnieju</label>
+        </div>
+        <div className="field">
+          <input
+            className="input"
+            placeholder=" "
+            value={startDate}
+            maxLength={10}
+            onChange={(e) => setStartDate(formatDateInput(e.target.value))}
+          />
+          <label className="label">Rozpoczęcie</label>
+        </div>
+        <div className="field">
+          <input
+            className="input"
+            placeholder=" "
+            value={endDate}
+            maxLength={10}
+            onChange={(e) => setEndDate(formatDateInput(e.target.value))}
+          />
+          <label className="label">Zakończenie</label>
+        </div>
       </div>
 
       <div className={styles.grid}>
@@ -97,7 +116,10 @@ export default function TournamentCreate() {
 
       <div className={styles.actions}>
         <button onClick={handleGenerate}>Generuj piny</button>
-        <button onClick={handleCreate} disabled={pins.length === 0}>
+        <button
+          onClick={handleCreate}
+          disabled={pins.filter(Boolean).length !== greens.length}
+        >
           Utwórz turniej
         </button>
       </div>

@@ -71,14 +71,6 @@
                         padding-right : var(--gap-tertiary);
                     }
                 }
-
-                .goto {
-                    color      : var(--blue);
-                    font-size  : var(--font-size-secondary);
-                    transition : color 250ms var(--transition), background 250ms var(--transition);
-                    text-align : right;
-                    width      : fit-content;
-                }
             }
         }
     }

@@ -26,3 +26,48 @@ body {
     font-weight : 400;
     transition  : color 250ms var(--transition);
 }
+
+.goto {
+    color      : var(--blue);
+    font-size  : var(--font-size-secondary);
+    transition : color 250ms var(--transition), background 250ms var(--transition);
+}
+
+.field {
+    position : relative;
+
+    .input {
+        all           : unset;
+        display       : block;
+        width         : 100%;
+        box-sizing    : border-box;
+        background    : var(--bg-input);
+        border-radius : var(--radius-primary);
+        padding       : var(--padding-input);
+        font-size     : var(--font-size-secondary);
+        color         : var(--text-active);
+        transition    : color 250ms var(--transition),
+        background 250ms var(--transition);
+    }
+
+    .label {
+        position       : absolute;
+        left           : .9rem;
+        top            : 50%;
+        transform      : translateY(-50%);
+        font-size      : var(--font-size-secondary);
+        color          : var(--text);
+        pointer-events : none;
+        transition     : top 200ms var(--transition),
+        transform 200ms var(--transition),
+        font-size 200ms var(--transition),
+        color 200ms var(--transition);
+    }
+
+    .input:focus + .label,
+    .input:not(:placeholder-shown) + .label {
+        top       : .4rem;
+        transform : translateY(0);
+        font-size : .75rem;
+    }
+}

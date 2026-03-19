@@ -43,7 +43,7 @@ export default function Dashboard() {
           <p>Planned:</p>
           <div className={styles.values}>
             <p>No planned tournaments yet</p>
-            <Link className={styles.goto} to="/tournaments/create">
+            <Link className="goto" to="/tournaments/create">
               Create tournament
             </Link>
           </div>
@@ -54,7 +54,7 @@ export default function Dashboard() {
             <p>Last tournament name</p>
             <p><span className={styles.desc}>From</span> 1234/56/78</p>
             <p><span className={styles.desc}>To</span> 1234/56/78</p>
-            <Link className={styles.goto} to="/">
+            <Link className="goto" to="/">
               Check pins
             </Link>
           </div>

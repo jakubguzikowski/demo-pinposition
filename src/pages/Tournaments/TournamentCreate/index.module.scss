@@ -1,39 +1,17 @@
 @use "../../../styles/breakpoints";
 
 .page {
-    display            : grid;
-    grid-template-rows : min-content 1fr min-content;
-    height             : 100%;
-    overflow           : hidden;
-}
-
-.inputs {
     display        : flex;
     flex-direction : column;
-    gap            : var(--gap-secondary);
-    padding        : var(--padding-tertiary);
-    border-bottom  : 1px solid var(--border);
-    transition     : border-bottom-color 250ms var(--transition);
 
-    @include breakpoints.up(tablet) {
-        flex-direction : row;
-    }
-
-    input {
-        all           : unset;
-        background    : var(--border);
-        border-radius : var(--radius-primary);
-        padding       : var(--padding-tertiary);
-        font-size     : var(--font-size-secondary);
-        color         : var(--text-active);
-        flex          : 1;
-
-        transition    : background 250ms var(--transition), color 250ms var(--transition);
-
-        &::placeholder {
-            color      : var(--text);
-            transition : color 250ms var(--transition);
-        }
+    .inputs {
+        display        : flex;
+        flex-direction : column;
+        gap            : var(--gap-secondary);
+        padding        : var(--padding-tertiary);
+        border-bottom  : 1px solid var(--border);
+        border-top     : 1px solid var(--border);
+        transition     : border-color 250ms var(--transition);
     }
 }
 
@@ -43,6 +21,10 @@
     gap                   : var(--gap-secondary);
     padding               : var(--padding-tertiary);
     overflow-y            : auto;
+
+    @include breakpoints.up(tablet) {
+        grid-template-columns : repeat(auto-fill, minmax(260px, 1fr));
+    }
 }
 
 .card {
@@ -107,7 +89,6 @@
         font-size     : var(--font-size-secondary);
         color         : var(--text-active);
         cursor        : pointer;
-
         transition    : background 250ms var(--transition), color 250ms var(--transition);
 
         &:disabled {

@@ -3,12 +3,14 @@
     --light-bg-primary     : #FAFAFA;
     --light-bg-secondary   : #EAEAEA;
     --light-bg-tertiary    : #DCDCDC;
+    --light-bg-quartiary   : #FFFFFF;
     --light-text-primary   : #808080;
     --light-text-secondary : #1A1A1A;
 
     --dark-bg-primary      : #1A1A1A;
     --dark-bg-secondary    : #212121;
     --dark-bg-tertiary     : #2A2A2A;
+    --dark-bg-quartiary    : #151515;
     --dark-text-primary    : #AFAFAF;
     --dark-text-secondary  : #FAFAFA;
 
@@ -24,6 +26,7 @@
     --padding-primary      : 1.6rem 1.8rem;
     --padding-secondary    : 1.6rem .9rem;
     --padding-tertiary     : .9rem;
+    --padding-input        : 1.4rem .9rem .4rem;
     --gap-primary          : .9rem;
     --gap-secondary        : .6rem;
     --gap-tertiary         : .3rem;
@@ -33,13 +36,16 @@
 
     // Kolory semantyczne (co robią)
     --bg                   : var(--light-bg-primary);
+    --bg-input             : var(--light-bg-quartiary);
     --border               : var(--light-bg-secondary);
     --text                 : var(--light-text-primary);
     --text-active          : var(--light-text-secondary);
+
 }
 
 [data-theme="dark"] {
     --bg          : var(--dark-bg-primary);
+    --bg-input    : var(--dark-bg-quartiary);
     --border      : var(--dark-bg-secondary);
     --text        : var(--dark-text-primary);
     --text-active : var(--dark-text-secondary);
