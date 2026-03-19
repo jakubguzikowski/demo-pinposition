@@ -1,53 +1,78 @@
 import styles from "./index.module.scss";
-import {
-  CheckCircleIcon,
-  HourglassIcon,
-  LightbulbIcon
-} from "@phosphor-icons/react";
+import { getCurrentSectionLetter } from "../../hooks/useSections";
+import { Link } from "react-router-dom";
 
 export default function Dashboard() {
+  const activeSection = getCurrentSectionLetter();
+
   return (
     <main className={styles.page}>
-      <div className={styles.list_group}>
-        <div className={styles.list}>
-          <p className={styles.title}>Implemented features</p>
-          <div className={styles.item}>
-            <CheckCircleIcon
-              className={styles.done}
-              size={20}
-              weight="duotone"
-            />
-            <p>Check greens data (width/length/visual)</p>
+      <div className={styles.list}>
+        <p className={styles.title}>Greens</p>
+        <div className={styles.item}>
+          <p>Greens count:</p>
+          <p>18</p>
+        </div>
+      </div>
+      <div className={styles.list}>
+        <p className={styles.title}>Sections</p>
+        <div className={styles.item}>
+          <p>Available:</p>
+          <p>A, B, C</p>
+        </div>
+        <div className={styles.item}>
+          <p>Current:</p>
+          <p>{activeSection}</p>
+        </div>
+        <div className={styles.item}>
+          <p>Last change:</p>
+          <p>1234/56/78</p>
+        </div>
+        <div className={styles.item}>
+          <p>Changes in:</p>
+          <p>1d 2h 34m 56s</p>
+        </div>
+      </div>
+      <div className={styles.list}>
+        <p className={styles.title}>Tournaments</p>
+        <div className={styles.item}>
+          <p>Current:</p>
+          <p>No active tournaments yet</p>
+        </div>
+        <div className={styles.item}>
+          <p>Planned:</p>
+          <div className={styles.values}>
+            <p>No planned tournaments yet</p>
+            <Link className={styles.goto} to="/tournaments/create">
+              Create tournament
+            </Link>
           </div>
         </div>
-        <div className={styles.list}>
-          <p className={styles.title}>In progress features</p>
-          <div className={styles.item}>
-            <HourglassIcon className={styles.todo} size={20} weight="duotone" />
-            <p>Template feature</p>
-          </div>
-        </div>
-        <div className={styles.list}>
-          <p className={styles.title}>Suggested features</p>
-          <div className={styles.item}>
-            <LightbulbIcon size={20} weight="duotone" />
-            <p>Template suggestion</p>
+        <div className={styles.item}>
+          <p>Last active:</p>
+          <div className={styles.values}>
+            <p>Last tournament name</p>
+            <p><span className={styles.desc}>From</span> 1234/56/78</p>
+            <p><span className={styles.desc}>To</span> 1234/56/78</p>
+            <Link className={styles.goto} to="/">
+              Check pins
+            </Link>
           </div>
         </div>
       </div>
       <div className={styles.list}>
-        <p className={styles.title}>Quick summary</p>
+        <p className={styles.title}>Features</p>
         <div className={styles.item}>
-          <CheckCircleIcon size={20} weight="duotone" />
-          <p>Current section: A/B/C</p>
+          <p>Implemented:</p>
+          <p>1</p>
         </div>
         <div className={styles.item}>
-          <CheckCircleIcon size={20} weight="duotone" />
-          <p>Section changes in: 3d 12m 34s</p>
+          <p>In progress:</p>
+          <p>2</p>
         </div>
         <div className={styles.item}>
-          <CheckCircleIcon size={20} weight="duotone" />
-          <p>Last tournament: 1234/56/78</p>
+          <p>Suggested:</p>
+          <p>3</p>
         </div>
       </div>
     </main>

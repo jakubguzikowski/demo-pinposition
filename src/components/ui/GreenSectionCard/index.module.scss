@@ -50,6 +50,7 @@
             .label_active {
                 font-size  : calc(var(--font-size-secondary) / 1.5);
                 fill       : var(--text-active);
+                transition : fill 250ms var(--transition);
             }
         }
     }

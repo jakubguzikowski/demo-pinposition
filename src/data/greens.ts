@@ -1,4 +1,4 @@
-interface Green {
+export interface Green {
   id: number;
   name: string;
   width: number;

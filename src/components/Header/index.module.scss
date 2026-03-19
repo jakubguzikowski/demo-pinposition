@@ -7,6 +7,27 @@
     padding         : var(--padding-tertiary);
     gap             : var(--gap-primary);
 
+    .select {
+        all           : unset;
+        color         : var(--text-active);
+        font-size     : var(--font-size-secondary);
+        background    : var(--border);
+        border-radius : var(--radius-primary);
+        padding       : var(--padding-tertiary);
+        width         : auto;
+        font-weight   : 600;
+        cursor        : pointer;
+        transition    : background 250ms var(--transition), color 250ms var(--transition);
+
+        @include breakpoints.up(desktop) {
+            color : var(--text);
+
+            &:hover {
+                color : var(--text-active);
+            }
+        }
+    }
+
     .theme_button {
         all             : unset;
         display         : flex;
