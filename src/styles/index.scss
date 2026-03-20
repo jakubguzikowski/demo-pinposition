@@ -42,12 +42,14 @@ body {
         width         : 100%;
         box-sizing    : border-box;
         background    : var(--bg-input);
+        border        : 1px solid var(--border);
         border-radius : var(--radius-primary);
         padding       : var(--padding-input);
         font-size     : var(--font-size-secondary);
         color         : var(--text-active);
         transition    : color 250ms var(--transition),
-        background 250ms var(--transition);
+        background 250ms var(--transition),
+        border 250ms var(--transition);
     }
 
     .label {

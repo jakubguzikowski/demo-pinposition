@@ -1,13 +1,13 @@
 import styles from "./index.module.scss";
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { CalendarIcon } from "@phosphor-icons/react";
 import { greens } from "../../../data/greens";
 import { greenSvgs } from "../../../assets/greens";
 import { generatePinPositions } from "../../../utils/generatePinPositions";
 import { useTournaments } from "../../../hooks/useTournaments";
 import { PinPosition } from "../../../types/tournament";
 import { handleManualPin } from "../../../utils/handleManualPin";
+import { Link } from "react-router-dom/dist";
 
 function formatDateInput(val: string) {
   const d = val.replace(/\D/g, "");
@@ -52,6 +52,16 @@ export default function TournamentCreate() {
 
   return (
     <main className={styles.page}>
+      <div className={styles.actions}>
+        <button onClick={handleGenerate}>Generuj piny</button>
+        <button
+          onClick={handleCreate}
+          disabled={pins.filter(Boolean).length !== greens.length}
+        >
+          Utwórz turniej
+        </button>
+      </div>
+
       <div className={styles.inputs}>
         <div className="field">
           <input
@@ -60,7 +70,7 @@ export default function TournamentCreate() {
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          <label className="label">Nazwa turnieju</label>
+          <label className="label">Event name</label>
         </div>
         <div className="field">
           <input
@@ -70,7 +80,7 @@ export default function TournamentCreate() {
             maxLength={10}
             onChange={(e) => setStartDate(formatDateInput(e.target.value))}
           />
-          <label className="label">Rozpoczęcie</label>
+          <label className="label">Start date (YYYY-MM-DD)</label>
         </div>
         <div className="field">
           <input
@@ -80,7 +90,7 @@ export default function TournamentCreate() {
             maxLength={10}
             onChange={(e) => setEndDate(formatDateInput(e.target.value))}
           />
-          <label className="label">Zakończenie</label>
+          <label className="label">End date (YYYY-MM-DD)</label>
         </div>
       </div>
 
@@ -96,32 +106,30 @@ export default function TournamentCreate() {
               >
                 {Svg && <Svg className="greenSvg" />}
               </div>
-              <div className={styles.info}>
-                <p>
-                  <span>{green.name}</span>
-                </p>
-                <p>
-                  <span>X:</span>
-                  <span>{pin?.posX ?? "—"}</span>
-                </p>
-                <p>
-                  <span>Y:</span>
-                  <span>{pin?.posY ?? "—"}</span>
-                </p>
+              <div className={styles.properties}>
+                <div className={styles.item}>
+                  <p>Name:</p>
+                  <p>{green.name}</p>
+                </div>
+                <div className={styles.item}>
+                  <p>Pin position:</p>
+                  <div className={styles.values}>
+                    <div className={styles.value}>
+                      <p className={styles.desc}>{pin?.posX && "X"}</p>
+                      <p className={styles.data}>
+                        {pin?.posX ?? "Not yet generated"}
+                      </p>
+                    </div>
+                    <div className={styles.value}>
+                      <p className={styles.desc}>{pin?.posX && "Y"}</p>
+                      <p className={styles.data}>{pin?.posY ?? ""}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           );
         })}
-      </div>
-
-      <div className={styles.actions}>
-        <button onClick={handleGenerate}>Generuj piny</button>
-        <button
-          onClick={handleCreate}
-          disabled={pins.filter(Boolean).length !== greens.length}
-        >
-          Utwórz turniej
-        </button>
       </div>
     </main>
   );
