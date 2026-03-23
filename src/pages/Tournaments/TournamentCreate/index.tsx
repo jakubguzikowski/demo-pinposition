@@ -1,13 +1,12 @@
 import styles from "./index.module.scss";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { greens } from "../../../data/greens";
-import { greenSvgs } from "../../../assets/greens";
 import { generatePinPositions } from "../../../utils/generatePinPositions";
 import { useTournaments } from "../../../hooks/useTournaments";
 import { PinPosition } from "../../../types/tournament";
-import { handleManualPin } from "../../../utils/handleManualPin";
-import { Link } from "react-router-dom/dist";
+import TournamentCard from "../../../components/Card/TournamentCard";
+import CardsRow from "../../../components/CardsRow";
 
 function formatDateInput(val: string) {
   const d = val.replace(/\D/g, "");
@@ -53,7 +52,7 @@ export default function TournamentCreate() {
   return (
     <main className={styles.page}>
       <div className={styles.actions}>
-        <button onClick={handleGenerate}>Generuj piny</button>
+        <button onClick={handleGenerate}>Generate pin positions</button>
         <button
           onClick={handleCreate}
           disabled={pins.filter(Boolean).length !== greens.length}
@@ -62,6 +61,9 @@ export default function TournamentCreate() {
         </button>
       </div>
 
+      <div className={styles.heading}>
+        <h2 className="title">Fill the tournament data</h2>
+      </div>
       <div className={styles.inputs}>
         <div className="field">
           <input
@@ -94,43 +96,25 @@ export default function TournamentCreate() {
         </div>
       </div>
 
-      <div className={styles.grid}>
-        {greens.map((green, index) => {
-          const Svg = greenSvgs[green.id];
-          const pin = pins[index];
-          return (
-            <div key={green.id} className={styles.card}>
-              <div
-                className={styles.svg_wrapper}
-                onClick={(e) => handleManualPin(e, green, index, pins, setPins)}
-              >
-                {Svg && <Svg className="greenSvg" />}
-              </div>
-              <div className={styles.properties}>
-                <div className={styles.item}>
-                  <p>Name:</p>
-                  <p>{green.name}</p>
-                </div>
-                <div className={styles.item}>
-                  <p>Pin position:</p>
-                  <div className={styles.values}>
-                    <div className={styles.value}>
-                      <p className={styles.desc}>{pin?.posX && "X"}</p>
-                      <p className={styles.data}>
-                        {pin?.posX ?? "Not yet generated"}
-                      </p>
-                    </div>
-                    <div className={styles.value}>
-                      <p className={styles.desc}>{pin?.posX && "Y"}</p>
-                      <p className={styles.data}>{pin?.posY ?? ""}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+      <CardsRow
+        id="pins"
+        title="Adjust the tournament pin positions"
+        metaLabel="Pins set: "
+        metaValue={`${pins.filter(Boolean).length} / ${greens.length}`}
+      >
+        <>
+          {greens.map((green, index) => (
+            <TournamentCard
+              key={green.id}
+              green={green}
+              index={index}
+              pin={pins[index] ?? null}
+              pins={pins}
+              setPins={setPins}
+            />
+          ))}
+        </>
+      </CardsRow>
     </main>
   );
 }

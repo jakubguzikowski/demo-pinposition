@@ -1,11 +1,11 @@
 import styles from "./index.module.scss";
 import { SectionData } from "../../../hooks/useSections";
 
-interface GreenSectionCardProps {
+interface SectionCardProps {
   section: SectionData;
 }
 
-export default function GreenSectionCard({ section }: GreenSectionCardProps) {
+export default function SectionCard({ section }: SectionCardProps) {
   const { id, name, Svg, sections, activeSectionIndex } = section;
 
   return (
@@ -27,34 +27,13 @@ export default function GreenSectionCard({ section }: GreenSectionCardProps) {
               <rect x="0" y="66.66" width="100" height="33.34" />
             </clipPath>
           </defs>
-
           {sections.map((letter, i) => (
             <g key={i} clipPath={`url(#clip-${i}-${id})`}>
-              <Svg
-                className={
-                  i === activeSectionIndex
-                    ? styles.svg_active
-                    : styles.svg_inactive
-                }
-              />
+              <Svg className={i === activeSectionIndex ? styles.svg_active : styles.svg_inactive} />
             </g>
           ))}
-
-          <line
-            x1="0"
-            y1="33.33"
-            x2="100"
-            y2="33.33"
-            className={styles.divider}
-          />
-          <line
-            x1="0"
-            y1="66.66"
-            x2="100"
-            y2="66.66"
-            className={styles.divider}
-          />
-
+          <line x1="0" y1="33.33" x2="100" y2="33.33" className={styles.divider} />
+          <line x1="0" y1="66.66" x2="100" y2="66.66" className={styles.divider} />
           {sections.map((letter, i) => (
             <text
               key={i}
@@ -62,9 +41,7 @@ export default function GreenSectionCard({ section }: GreenSectionCardProps) {
               y={16.66 + i * 33.33}
               textAnchor="middle"
               dominantBaseline="middle"
-              className={
-                i === activeSectionIndex ? styles.label_active : styles.label
-              }
+              className={i === activeSectionIndex ? styles.label_active : styles.label}
             >
               {letter}
             </text>

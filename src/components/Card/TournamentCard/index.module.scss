@@ -1,0 +1,24 @@
+@use "../shared";
+
+.card {
+    @include shared.base;
+
+    .image {
+        @include shared.image;
+        cursor : crosshair;
+
+        .svg {
+            @include shared.svg;
+
+            circle {
+                fill       : var(--orange);
+                stroke     : none;
+                transition : fill 250ms var(--transition);
+            }
+        }
+    }
+
+    .properties {
+        @include shared.properties;
+    }
+}

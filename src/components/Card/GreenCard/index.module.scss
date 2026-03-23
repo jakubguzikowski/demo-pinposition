@@ -1,0 +1,17 @@
+@use "../shared";
+
+.card {
+    @include shared.base;
+
+    .image {
+        @include shared.image;
+
+        .svg {
+            @include shared.svg;
+        }
+    }
+
+    .properties {
+        @include shared.properties;
+    }
+}

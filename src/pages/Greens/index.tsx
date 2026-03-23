@@ -1,8 +1,8 @@
 import { useGreens } from "../../hooks/useGreens";
 import { useSections, getCurrentSectionLetter } from "../../hooks/useSections";
-import GreenScrollSection from "../../components/GreenScrollSection";
-import GreenCard from "../../components/ui/GreenCard";
-import GreenSectionCard from "../../components/ui/GreenSectionCard";
+import CardsRow from "../../components/CardsRow";
+import GreenCard from "../../components/Card/GreenCard";
+import SectionCard from "../../components/Card/SectionCard";
 import styles from "./index.module.scss";
 
 export default function Greens() {
@@ -12,7 +12,7 @@ export default function Greens() {
 
   return (
     <main className={styles.page}>
-      <GreenScrollSection
+      <CardsRow
         id="greens"
         title="Greens details"
         metaLabel="Total greens: "
@@ -23,9 +23,9 @@ export default function Greens() {
             <GreenCard key={green.id} green={green} />
           ))}
         </>
-      </GreenScrollSection>
+      </CardsRow>
 
-      <GreenScrollSection
+      <CardsRow
         id="sections"
         title="Sections details"
         metaLabel="Active section: "
@@ -33,10 +33,10 @@ export default function Greens() {
       >
         <>
           {sections.map((section) => (
-            <GreenSectionCard key={section.id} section={section} />
+            <SectionCard key={section.id} section={section} />
           ))}
         </>
-      </GreenScrollSection>
+      </CardsRow>
     </main>
   );
 }

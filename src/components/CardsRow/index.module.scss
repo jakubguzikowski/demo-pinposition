@@ -1,0 +1,83 @@
+@use "../../styles/breakpoints";
+
+.section {
+    display        : flex;
+    flex-direction : column;
+    width          : 100dvw;
+    overflow       : hidden;
+    padding        : var(--padding-secondary);
+    gap            : var(--gap-primary);
+    padding-top    : 0;
+    padding-bottom : 0;
+
+    .heading {
+        display         : flex;
+        justify-content : space-between;
+        align-items     : center;
+        padding         : var(--padding-secondary);
+        padding-left    : 0;
+        padding-right   : 0;
+        padding-bottom  : 0;
+
+        .heading_right {
+            display     : flex;
+            align-items : center;
+            gap         : var(--gap-secondary);
+        }
+
+        .label {
+            color      : var(--text);
+            transition : color 250ms var(--transition);
+        }
+
+        .value {
+            font-weight : 600;
+        }
+    }
+
+    .wrapper {
+        display                    : flex;
+        overflow-x                 : auto;
+        gap                        : var(--gap-primary);
+        scroll-snap-type           : x mandatory;
+        -webkit-overflow-scrolling : touch;
+        scrollbar-width            : none;
+
+        &::-webkit-scrollbar {
+            display : none;
+        }
+    }
+
+    .arrows {
+        display         : flex;
+        justify-content : flex-end;
+        gap             : var(--gap-tertiary);
+
+        button {
+            all           : unset;
+            display       : flex;
+            align-items   : center;
+            cursor        : pointer;
+            color         : var(--text-active);
+            background    : var(--border);
+            border-radius : var(--radius-primary);
+            padding       : var(--padding-tertiary);
+            transition    : color 250ms var(--transition),
+            background 250ms var(--transition);
+
+            @include breakpoints.up(desktop) {
+                color : var(--text);
+
+                &:hover {
+                    color : var(--text-active);
+                }
+            }
+
+            &:disabled {
+                opacity        : 0.3;
+                cursor         : not-allowed;
+                pointer-events : none;
+            }
+        }
+    }
+}

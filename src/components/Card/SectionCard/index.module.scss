@@ -1,0 +1,52 @@
+@use "../shared";
+
+.card {
+    @include shared.base;
+    gap : var(--gap-secondary); // nadpisuje gap z mixina
+
+    .image {
+        @include shared.image;
+        position : static; // SectionCard nie potrzebuje relative
+
+        .svg_container {
+            width  : 100%;
+            height : 100%;
+
+            .svg_inactive {
+                color      : var(--light-bg-tertiary);
+                transition : color 250ms var(--transition);
+
+                [data-theme="dark"] & {
+                    color : var(--dark-bg-tertiary);
+                }
+            }
+
+            .svg_active {
+                color : var(--green);
+            }
+
+            .divider {
+                stroke           : var(--text);
+                stroke-width     : .5;
+                stroke-dasharray : 4 2;
+                transition       : stroke 250ms var(--transition);
+            }
+
+            .label {
+                font-size  : calc(var(--font-size-secondary) / 1.5);
+                fill       : var(--text);
+                transition : fill 250ms var(--transition);
+            }
+
+            .label_active {
+                font-size  : calc(var(--font-size-secondary) / 1.5);
+                fill       : var(--text-active);
+                transition : fill 250ms var(--transition);
+            }
+        }
+    }
+
+    .properties {
+        @include shared.properties;
+    }
+}
