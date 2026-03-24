@@ -6,6 +6,7 @@ import Greens from "./pages/Greens";
 import Tournaments from "./pages/Tournaments";
 import Features from "./pages/Features";
 import TournamentCreate from "./pages/Tournaments/TournamentCreate";
+import TournamentDetail from "./pages/Tournaments/TournamentDetail";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/tournaments" element={<Tournaments />} />
         <Route path="/features" element={<Features />} />
         <Route path="/tournaments/create" element={<TournamentCreate />} />
+        <Route path="/tournaments/:id" element={<TournamentDetail />} />
       </Route>
     </Routes>
   );

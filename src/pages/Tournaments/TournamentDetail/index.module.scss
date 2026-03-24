@@ -1,0 +1,52 @@
+@use "../../../components/Card/shared";
+
+.page {
+    display        : flex;
+    flex-direction : column;
+    height         : 100%;
+    overflow       : hidden;
+    min-width      : 0;
+
+    .not_found {
+        display         : flex;
+        align-items     : center;
+        justify-content : center;
+        height          : 100%;
+    }
+
+    .heading {
+        display         : flex;
+        justify-content : space-between;
+        align-items     : center;
+        padding         : var(--padding-secondary);
+        padding-bottom  : 0;
+
+        .info {
+            display        : flex;
+            flex-direction : column;
+            gap            : var(--gap-tertiary);
+        }
+    }
+}
+
+.card {
+    @include shared.base;
+
+    .image {
+        @include shared.image;
+
+        svg {
+            @include shared.svg;
+
+            circle {
+                fill       : var(--orange);
+                stroke     : none;
+                transition : fill 250ms var(--transition);
+            }
+        }
+    }
+
+    .properties {
+        @include shared.properties;
+    }
+}

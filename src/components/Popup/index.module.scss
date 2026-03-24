@@ -1,0 +1,75 @@
+.popup {
+    display       : flex;
+    align-items   : center;
+    gap           : var(--gap-secondary);
+    padding       : var(--padding-tertiary);
+    border-radius : var(--radius-primary);
+    width         : 100%;
+
+    .icon {
+        display     : flex;
+        align-items : center;
+        flex-shrink : 0;
+    }
+
+    .message {
+        flex      : 1;
+        font-size : var(--font-size-secondary);
+    }
+
+    .close {
+        all         : unset;
+        display     : flex;
+        align-items : center;
+        cursor      : pointer;
+        flex-shrink : 0;
+        opacity     : .7;
+        transition  : opacity 250ms var(--transition);
+
+        &:hover {
+            opacity : 1;
+        }
+    }
+
+    &.success {
+        background : #D8FFC9;
+        color      : #3A8A1F;
+        border     : 1px solid #7FDC59;
+    }
+
+    &.fail {
+        background : #FFCACA;
+        color      : #B03030;
+        border     : 1px solid #FF5656;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity   : 0;
+        transform : translateX(20px);
+    }
+    to {
+        opacity   : 1;
+        transform : translateX(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity   : 1;
+        transform : translateX(0);
+    }
+    to {
+        opacity   : 0;
+        transform : translateX(20px);
+    }
+}
+
+.fadeIn {
+    animation : fadeIn 250ms var(--transition) forwards;
+}
+
+.fadeOut {
+    animation : fadeOut 250ms var(--transition) forwards;
+}

@@ -4,8 +4,6 @@ import { getBBoxDimensions } from "./getBBoxDimensions";
 import { calculateSvgScale } from "./calculateSvgScale";
 import { convertPinToRelativePosition } from "./convertPinToRelativePosition";
 import { generateDotInsidePath } from "./generateDotInsidePath";
-import { addDotToSvg } from "./addDotToSvg";
-import { removeDotsFromSvg } from "./removeDotsFromSvg";
 
 export function generatePinPositions(greens: Green[]): (PinPosition | null)[] {
   const svgs = document.querySelectorAll<SVGSVGElement>(".greenSvg");
@@ -30,9 +28,6 @@ export function generatePinPositions(greens: Green[]): (PinPosition | null)[] {
 
     path.style.fill = originalFill || "none";
     if (!point) return null;
-
-    removeDotsFromSvg(svg);
-    addDotToSvg(svg, point.x, point.y);
 
     const { posX, posY } = convertPinToRelativePosition(
       point.x,

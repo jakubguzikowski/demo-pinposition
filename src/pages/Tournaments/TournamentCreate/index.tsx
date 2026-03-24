@@ -2,11 +2,13 @@ import styles from "./index.module.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { greens } from "../../../data/greens";
+import { generateId } from "../../../utils/generateId";
 import { generatePinPositions } from "../../../utils/generatePinPositions";
-import { useTournaments } from "../../../hooks/useTournaments";
+import { useTournamentContext } from "../../../context/TournamentContext";
 import { PinPosition } from "../../../types/tournament";
 import TournamentCard from "../../../components/Card/TournamentCard";
 import CardsRow from "../../../components/CardsRow";
+import { usePopupContext } from "../../../context/PopupContext";
 
 function formatDateInput(val: string) {
   const d = val.replace(/\D/g, "");
@@ -19,15 +21,15 @@ function formatDateInput(val: string) {
 
 export default function TournamentCreate() {
   const navigate = useNavigate();
-  const { add } = useTournaments();
+  const { add } = useTournamentContext();
+  const { showPopup } = usePopupContext();
   const [name, setName] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [pins, setPins] = useState<(PinPosition | null)[]>([]);
 
   const handleGenerate = () => {
-    const result = generatePinPositions(greens);
-    setPins(result);
+    setPins(generatePinPositions(greens));
   };
 
   const handleCreate = () => {
@@ -36,16 +38,32 @@ export default function TournamentCreate() {
       !startDate ||
       !endDate ||
       pins.filter(Boolean).length !== greens.length
-    )
+    ) {
+      showPopup({
+        success: false,
+        message: "Fill all fields and set all pins."
+      });
       return;
-    add({
-      id: crypto.randomUUID(),
+    }
+
+    const success = add({
+      id: generateId(),
       name,
       startDate,
       endDate,
       createdAt: new Date().toISOString(),
       pins
     });
+
+    if (!success) {
+      showPopup({
+        success: false,
+        message: "Tournament with this name already exists."
+      });
+      return;
+    }
+
+    showPopup({ success: true, message: "Tournament created successfully." });
     navigate("/tournaments");
   };
 
@@ -70,6 +88,7 @@ export default function TournamentCreate() {
             className="input"
             placeholder=" "
             value={name}
+            autoComplete="off"
             onChange={(e) => setName(e.target.value)}
           />
           <label className="label">Event name</label>
@@ -79,6 +98,8 @@ export default function TournamentCreate() {
             className="input"
             placeholder=" "
             value={startDate}
+            inputMode="numeric"
+            autoComplete="off"
             maxLength={10}
             onChange={(e) => setStartDate(formatDateInput(e.target.value))}
           />
@@ -89,6 +110,8 @@ export default function TournamentCreate() {
             className="input"
             placeholder=" "
             value={endDate}
+            inputMode="numeric"
+            autoComplete="off"
             maxLength={10}
             onChange={(e) => setEndDate(formatDateInput(e.target.value))}
           />

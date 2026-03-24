@@ -6,8 +6,6 @@ import { getBBoxDimensions } from "./getBBoxDimensions";
 import { calculateSvgScale } from "./calculateSvgScale";
 import { arePointsInsidePath } from "./checkMarginInsidePath";
 import { convertPinToRelativePosition } from "./convertPinToRelativePosition";
-import { addDotToSvg } from "./addDotToSvg";
-import { removeDotsFromSvg } from "./removeDotsFromSvg";
 
 export function handleManualPin(
   event: React.MouseEvent<HTMLDivElement>,
@@ -35,9 +33,6 @@ export function handleManualPin(
 
   if (!arePointsInsidePath(path, point, scaleX * 2, scaleY * 2, svgPoint))
     return;
-
-  removeDotsFromSvg(svg);
-  addDotToSvg(svg, point.x, point.y);
 
   const { posX, posY } = convertPinToRelativePosition(
     point.x,

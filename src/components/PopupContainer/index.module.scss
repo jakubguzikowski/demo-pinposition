@@ -1,0 +1,22 @@
+@use "../../styles/breakpoints";
+
+.container {
+    position       : fixed;
+    top         : var(--gap-primary);
+    //bottom         : var(--gap-primary);
+    right          : var(--gap-primary);
+    display        : flex;
+    flex-direction : column-reverse;
+    gap            : var(--gap-secondary);
+    width          : calc(100% - var(--gap-primary) * 2);
+    pointer-events : none;
+    z-index        : 9999;
+
+    > * {
+        pointer-events : all;
+    }
+
+    @include breakpoints.up(tablet) {
+        max-width : 400px;
+    }
+}

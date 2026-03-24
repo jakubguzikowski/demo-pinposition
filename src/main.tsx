@@ -1,6 +1,8 @@
 import React, { StrictMode } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContext";
+import { TournamentProvider } from "./context/TournamentContext";
+import { PopupProvider } from "./context/PopupContext";
 import { createRoot } from "react-dom/client";
 import "./styles/index.scss";
 import "@fontsource/inter/400.css";
@@ -14,7 +16,11 @@ createRoot(document.getElementById("root") as HTMLElement).render(
   <StrictMode>
     <BrowserRouter>
       <ThemeProvider>
-        <App />
+        <TournamentProvider>
+          <PopupProvider>
+            <App />
+          </PopupProvider>
+        </TournamentProvider>
       </ThemeProvider>
     </BrowserRouter>
   </StrictMode>

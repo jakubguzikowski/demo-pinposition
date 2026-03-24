@@ -5,15 +5,19 @@
 
     .image {
         @include shared.image;
-        cursor : crosshair;
 
         .svg {
             @include shared.svg;
+
+            path {
+                cursor  : crosshair;
+            }
 
             circle {
                 fill       : var(--orange);
                 stroke     : none;
                 transition : fill 250ms var(--transition);
+                cursor     : crosshair;
             }
         }
     }

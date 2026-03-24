@@ -14,10 +14,16 @@ function load(): Tournament[] {
 export function useTournaments() {
   const [tournaments, setTournaments] = useState<Tournament[]>(load);
 
-  const add = (t: Tournament) => {
+  const add = (t: Tournament): boolean => {
+    const isDuplicate = tournaments.some(
+      (existing) => existing.name.toLowerCase() === t.name.toLowerCase()
+    );
+    if (isDuplicate) return false;
+
     const updated = [...tournaments, t];
     localStorage.setItem(KEY, JSON.stringify(updated));
     setTournaments(updated);
+    return true;
   };
 
   const remove = (id: string) => {
