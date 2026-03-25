@@ -1,0 +1,66 @@
+@use "../../styles/breakpoints";
+
+.wrapper {
+    position : relative;
+    flex     : 1;
+
+    .field {
+        display : flex;
+        cursor  : pointer;
+    }
+
+    .popover {
+        position      : absolute;
+        top           : calc(100% + var(--gap-tertiary));
+        left          : auto;
+        right         : 0;
+        z-index       : 1000;
+        background    : var(--bg-input);
+        border-radius : var(--radius-primary);
+        border        : 1px solid var(--border);
+        padding       : var(--padding-tertiary);
+        font-size     : var(--font-size-secondary);
+
+        &.first {
+            left  : 0;
+            right : auto;
+        }
+
+        @include breakpoints.up(desktop) {
+            left  : 0;
+            right : auto;
+        }
+
+        :global(.rdp-chevron) {
+            fill : var(--text-active);
+        }
+
+        :global(.rdp-caption_label) {
+            color        : var(--text-active);
+            padding-left : 12px;
+        }
+
+        :global(.rdp-day_button) {
+            font-size   : var(--font-size-secondary);
+            font-weight : 400;
+            color       : var(--text);
+        }
+
+        :global(.rdp-today .rdp-day_button) {
+            font-size   : var(--font-size-secondary);
+            font-weight : 600;
+            color       : var(--text-active);
+        }
+
+        :global(.rdp-selected .rdp-day_button) {
+            font-size   : var(--font-size-secondary);
+            font-weight : 600;
+            background  : var(--border);
+            border      : none;
+        }
+
+        :global(.rdp-weekday) {
+            color : var(--text-active);
+        }
+    }
+}

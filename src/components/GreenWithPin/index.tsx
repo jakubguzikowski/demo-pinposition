@@ -20,9 +20,7 @@ export default function GreenWithPin({
   const [viewBox, setViewBox] = useState<string | null>(null);
 
   useEffect(() => {
-    if (svgRef.current) {
-      setViewBox(svgRef.current.getAttribute("viewBox"));
-    }
+    setViewBox(svgRef.current?.getAttribute("viewBox") ?? null);
   }, []);
 
   return (
@@ -37,7 +35,7 @@ export default function GreenWithPin({
           viewBox={viewBox}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <circle cx={pin.x} cy={pin.y} r="5" fill="var(--orange)" />
+          <circle cx={pin.x} cy={pin.y} r="3" fill="var(--orange)" />
         </svg>
       )}
     </div>

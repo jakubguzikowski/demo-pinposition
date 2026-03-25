@@ -4,6 +4,35 @@
     display        : flex;
     flex-direction : column;
 
+    .actions {
+        position      : sticky;
+        top           : -1px;
+        display       : flex;
+        gap           : var(--gap-secondary);
+        padding       : var(--padding-tertiary);
+        border-top    : 1px solid var(--border);
+        border-bottom : 1px solid var(--border);
+        background    : var(--bg);
+        transition    : border-color 250ms var(--transition), background 250ms var(--transition);
+        z-index       : 999;
+
+        button {
+            all           : unset;
+            background    : var(--border);
+            border-radius : var(--radius-primary);
+            padding       : var(--padding-tertiary);
+            font-size     : var(--font-size-secondary);
+            color         : var(--text-active);
+            cursor        : pointer;
+            transition    : background 250ms var(--transition), color 250ms var(--transition);
+
+            &:disabled {
+                opacity : 0.4;
+                cursor  : not-allowed;
+            }
+        }
+    }
+
     .heading {
         padding        : var(--padding-secondary);
         padding-bottom : 0;
@@ -17,33 +46,9 @@
         border-bottom  : 1px solid var(--border);
         transition     : border-color 250ms var(--transition);
     }
-}
 
-.actions {
-    position      : sticky;
-    top           : -1px;
-    display       : flex;
-    gap           : var(--gap-secondary);
-    padding       : var(--padding-tertiary);
-    border-top    : 1px solid var(--border);
-    border-bottom : 1px solid var(--border);
-    background    : var(--bg);
-    transition    : border-color 250ms var(--transition), background 250ms var(--transition);
-    z-index       : 999;
-
-    button {
-        all           : unset;
-        background    : var(--border);
-        border-radius : var(--radius-primary);
-        padding       : var(--padding-tertiary);
-        font-size     : var(--font-size-secondary);
-        color         : var(--text-active);
-        cursor        : pointer;
-        transition    : background 250ms var(--transition), color 250ms var(--transition);
-
-        &:disabled {
-            opacity : 0.4;
-            cursor  : not-allowed;
-        }
+    .dates {
+        display : flex;
+        gap     : var(--gap-secondary);
     }
 }

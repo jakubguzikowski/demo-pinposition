@@ -9,15 +9,7 @@ import { PinPosition } from "../../../types/tournament";
 import TournamentCard from "../../../components/Card/TournamentCard";
 import CardsRow from "../../../components/CardsRow";
 import { usePopupContext } from "../../../context/PopupContext";
-
-function formatDateInput(val: string) {
-  const d = val.replace(/\D/g, "");
-  const p = [];
-  if (d.length > 0) p.push(d.slice(0, 4));
-  if (d.length > 4) p.push(d.slice(4, 6));
-  if (d.length > 6) p.push(d.slice(6, 8));
-  return p.join("-");
-}
+import DatePicker from "../../../components/DatePicker";
 
 export default function TournamentCreate() {
   const navigate = useNavigate();
@@ -93,29 +85,14 @@ export default function TournamentCreate() {
           />
           <label className="label">Event name</label>
         </div>
-        <div className="field">
-          <input
-            className="input"
-            placeholder=" "
+        <div className={styles.dates}>
+          <DatePicker
             value={startDate}
-            inputMode="numeric"
-            autoComplete="off"
-            maxLength={10}
-            onChange={(e) => setStartDate(formatDateInput(e.target.value))}
+            onChange={setStartDate}
+            label="Start date"
+            isFirst
           />
-          <label className="label">Start date (YYYY-MM-DD)</label>
-        </div>
-        <div className="field">
-          <input
-            className="input"
-            placeholder=" "
-            value={endDate}
-            inputMode="numeric"
-            autoComplete="off"
-            maxLength={10}
-            onChange={(e) => setEndDate(formatDateInput(e.target.value))}
-          />
-          <label className="label">End date (YYYY-MM-DD)</label>
+          <DatePicker value={endDate} onChange={setEndDate} label="End date" />
         </div>
       </div>
 

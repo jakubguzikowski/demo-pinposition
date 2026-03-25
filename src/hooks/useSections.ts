@@ -48,3 +48,19 @@ export function useSections(): SectionData[] {
     };
   });
 }
+
+export function getSectionLastChange(): Date {
+  const now = new Date();
+  const day = (now.getDay() + 6) % 7; // 0=pon, 6=nie
+  const monday = new Date(now);
+  monday.setHours(0, 0, 0, 0);
+  monday.setDate(now.getDate() - day);
+  return monday;
+}
+
+export function getSectionNextChange(): Date {
+  const lastChange = getSectionLastChange();
+  const next = new Date(lastChange);
+  next.setDate(lastChange.getDate() + 7);
+  return next;
+}
