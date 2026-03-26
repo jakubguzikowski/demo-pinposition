@@ -85,15 +85,14 @@ export default function TournamentCreate() {
           />
           <label className="label">Event name</label>
         </div>
-        <div className={styles.dates}>
-          <DatePicker
-            value={startDate}
-            onChange={setStartDate}
-            label="Start date"
-            isFirst
-          />
-          <DatePicker value={endDate} onChange={setEndDate} label="End date" />
-        </div>
+        <DatePicker
+          startDate={startDate}
+          endDate={endDate}
+          onRangeChange={(start, end) => {
+            setStartDate(start);
+            setEndDate(end);
+          }}
+        />
       </div>
 
       <CardsRow

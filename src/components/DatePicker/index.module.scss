@@ -12,8 +12,7 @@
     .popover {
         position      : absolute;
         top           : calc(100% + var(--gap-tertiary));
-        left          : auto;
-        right         : 0;
+        left          : 0;
         z-index       : 1000;
         background    : var(--bg-input);
         border-radius : var(--radius-primary);
@@ -21,46 +20,94 @@
         padding       : var(--padding-tertiary);
         font-size     : var(--font-size-secondary);
 
-        &.first {
-            left  : 0;
-            right : auto;
+        .confirm {
+            all           : unset;
+            display       : block;
+            width         : 100%;
+            box-sizing    : border-box;
+            text-align    : center;
+            padding       : var(--padding-button);
+            font-size     : var(--font-size-secondary);
+            font-weight   : 500;
+            color         : var(--text-active);
+            background    : var(--border);
+            border-radius : var(--radius-primary);
+            margin-top    : var(--gap-primary);
+            cursor        : pointer;
+            transition    : background 250ms var(--transition);
+
+            &:disabled {
+                opacity : 0.4;
+                cursor  : not-allowed;
+            }
         }
 
-        @include breakpoints.up(desktop) {
-            left  : 0;
-            right : auto;
-        }
-
-        :global(.rdp-chevron) {
-            fill : var(--text-active);
+        :global(.rdp-root) {
+            color                         : var(--text);
+            --rdp-accent-color            : var(--text-active);
+            --rdp-accent-background-color : var(--border);
         }
 
         :global(.rdp-caption_label) {
-            color        : var(--text-active);
-            padding-left : 12px;
-        }
-
-        :global(.rdp-day_button) {
-            font-size   : var(--font-size-secondary);
-            font-weight : 400;
-            color       : var(--text);
-        }
-
-        :global(.rdp-today .rdp-day_button) {
-            font-size   : var(--font-size-secondary);
-            font-weight : 600;
-            color       : var(--text-active);
-        }
-
-        :global(.rdp-selected .rdp-day_button) {
-            font-size   : var(--font-size-secondary);
-            font-weight : 600;
-            background  : var(--border);
-            border      : none;
+            color : var(--text-active);
         }
 
         :global(.rdp-weekday) {
             color : var(--text-active);
         }
+
+        :global(.rdp-day_button) {
+            font-size   : var(--font-size-secondary);
+            font-weight : 400;
+        }
+
+        :global(.rdp-day_button) {
+            font-size   : var(--font-size-secondary);
+            font-weight : 400;
+        }
+
+        :global(.rdp-range_start .rdp-day_button),
+        :global(.rdp-range_end .rdp-day_button) {
+            color       : var(--bg);
+            font-weight : 600;
+        }
+
+        //:global(.rdp-chevron) {
+        //    fill : var(--text-active);
+        //}
+        //
+        //:global(.rdp-caption_label) {
+        //    color        : var(--text-active);
+        //    padding-left : 12px;
+        //}
+        //
+        //:global(.rdp-day_button) {
+        //    font-size   : var(--font-size-secondary);
+        //    font-weight : 400;
+        //    color       : var(--text);
+        //}
+        //
+        //:global(.rdp-today .rdp-day_button) {
+        //    font-weight : 600;
+        //    color       : var(--text-active);
+        //    background  : var(--border);
+        //}
+        //
+        //:global(.rdp-selected .rdp-day_button) {
+        //    font-weight : 600;
+        //    color       : var(--bg);
+        //    background  : var(--text-active);
+        //    border: 1px solid var(--text-active);
+        //}
+        //
+        //:global(.rdp-range_middle .rdp-day_button) {
+        //    color      : var(--text-active);
+        //    background : var(--bg);
+        //    border: 1px solid var(--bg);
+        //}
+        //
+        //:global(.rdp-weekday) {
+        //    color : var(--text-active);
+        //}
     }
 }

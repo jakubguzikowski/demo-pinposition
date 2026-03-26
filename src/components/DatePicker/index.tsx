@@ -1,19 +1,12 @@
 import styles from "./index.module.scss";
 import { useState, useRef, useEffect } from "react";
-import { DayPicker } from "react-day-picker";
+import { DayPicker, DateRange } from "react-day-picker";
 import "react-day-picker/style.css";
 
 interface DatePickerProps {
-  value: string;
-  onChange: (val: string) => void;
-  label: string;
-  isFirst?: boolean;
-}
-
-function toDate(val: string): Date | undefined {
-  if (val.length !== 10) return undefined;
-  const d = new Date(val);
-  return isNaN(d.getTime()) ? undefined : d;
+  startDate: string;
+  endDate: string;
+  onRangeChange: (start: string, end: string) => void;
 }
 
 function fromDate(date: Date): string {
@@ -24,26 +17,37 @@ function fromDate(date: Date): string {
 }
 
 export default function DatePicker({
-  value,
-  onChange,
-  label,
-  isFirst
+  startDate,
+  endDate,
+  onRangeChange
 }: DatePickerProps) {
   const [open, setOpen] = useState(false);
+  const [range, setRange] = useState<DateRange | undefined>({
+    from: startDate ? new Date(startDate) : undefined,
+    to: endDate ? new Date(endDate) : undefined
+  } as DateRange);
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
-      if (!ref.current?.contains(e.target as Node)) {
-        setOpen(false);
-      }
+      if (!ref.current?.contains(e.target as Node)) setOpen(false);
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  const selected = toDate(value);
-  const month = selected ?? new Date();
+  const handleSelect = (r: DateRange | undefined) => {
+    setRange(r);
+  };
+
+  const handleConfirm = () => {
+    if (!range?.from || !range?.to) return;
+    onRangeChange(fromDate(range.from), fromDate(range.to));
+    setOpen(false);
+  };
+
+  const displayValue =
+    startDate && endDate ? `${startDate} — ${endDate}` : startDate || "";
 
   return (
     <div className={styles.wrapper} ref={ref}>
@@ -51,27 +55,32 @@ export default function DatePicker({
         <input
           className="input"
           placeholder=" "
-          value={value}
+          value={displayValue}
           readOnly
           onFocus={() => setOpen(true)}
         />
-        <label className="label">{label}</label>
+        <label className="label">Tournament dates</label>
       </div>
 
       {open && (
-        <div className={`${styles.popover} ${isFirst ? styles.first : ""}`}>
+        <div className={styles.popover}>
           <DayPicker
-            mode="single"
-            weekStartsOn={1}
-            selected={selected}
-            defaultMonth={month}
-            onSelect={(date) => {
-              if (date) {
-                onChange(fromDate(date));
-                setOpen(false);
-              }
-            }}
+            captionLayout="label"
+            ISOWeek
+            mode="range"
+            navLayout="around"
+            required
+            resetOnSelect
+            selected={range}
+            onSelect={handleSelect}
           />
+          <button
+            className={styles.confirm}
+            disabled={!range?.from || !range?.to}
+            onClick={handleConfirm}
+          >
+            Confirm
+          </button>
         </div>
       )}
     </div>
