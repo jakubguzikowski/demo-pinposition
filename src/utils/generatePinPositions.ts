@@ -14,31 +14,35 @@ export function generatePinPositions(greens: Green[]): (PinPosition | null)[] {
     if (!path) return null;
 
     const originalFill = path.style.fill;
-    path.style.fill = "#000";
-    path.setAttribute("fill-rule", "evenodd");
 
-    const { width, height, x: bboxX, y: bboxY } = getBBoxDimensions(path);
-    const { scaleX, scaleY } = calculateSvgScale(
-      width,
-      height,
-      green.width,
-      green.height
-    );
-    const point = generateDotInsidePath(svg, path, green);
+    try {
+      path.style.fill = "#000";
+      path.setAttribute("fill-rule", "evenodd");
 
-    path.style.fill = originalFill || "none";
-    if (!point) return null;
+      const { width, height, x: bboxX, y: bboxY } = getBBoxDimensions(path);
+      const { scaleX, scaleY } = calculateSvgScale(
+        width,
+        height,
+        green.width,
+        green.height
+      );
+      const point = generateDotInsidePath(svg, path, green);
 
-    const { posX, posY } = convertPinToRelativePosition(
-      point.x,
-      point.y,
-      bboxX,
-      bboxY,
-      width,
-      height,
-      scaleX,
-      scaleY
-    );
-    return { x: point.x, y: point.y, posX, posY };
+      if (!point) return null;
+
+      const { posX, posY } = convertPinToRelativePosition(
+        point.x,
+        point.y,
+        bboxX,
+        bboxY,
+        width,
+        height,
+        scaleX,
+        scaleY
+      );
+      return { x: point.x, y: point.y, posX, posY };
+    } finally {
+      path.style.fill = originalFill || "none";
+    }
   });
 }

@@ -6,43 +6,122 @@
     align-items     : center;
     padding         : var(--padding-tertiary);
     gap             : var(--gap-primary);
+    position        : relative;
+}
 
-    .select {
-        all           : unset;
-        color         : var(--text-active);
-        font-size     : var(--font-size-secondary);
-        background    : var(--border);
-        border-radius : var(--radius-primary);
-        padding       : var(--padding-tertiary);
-        width         : auto;
-        font-weight   : 600;
-        cursor        : pointer;
-        transition    : background 250ms var(--transition), color 250ms var(--transition);
+.backButton {
+    all             : unset;
+    display         : flex;
+    align-items     : center;
+    justify-content : center;
+    padding         : var(--padding-tertiary);
+    color           : var(--text-active);
+    background      : var(--border);
+    border-radius   : var(--radius-primary);
+    cursor          : pointer;
+    transition      : background 250ms var(--transition), color 250ms var(--transition);
+}
 
-        @include breakpoints.up(desktop) {
-            color : var(--text);
+.titleButton {
+    all             : unset;
+    display         : flex;
+    align-items     : center;
+    justify-content : space-between;
+    width           : 100%;
+    color           : var(--text-active);
+    font-size       : var(--font-size-primary);
+    font-weight     : 600;
+    padding         : var(--padding-tertiary);
+    background      : var(--border);
+    border-radius   : var(--radius-primary);
+    cursor          : pointer;
+    transition      : background 250ms var(--transition), color 250ms var(--transition);
+}
 
-            &:hover {
-                color : var(--text-active);
-            }
-        }
+@include breakpoints.up(desktop) {
+    .titleButton {
+        display : none;
     }
 
-    .theme_button {
-        all             : unset;
-        display         : flex;
-        align-items     : center;
-        justify-content : center;
-        color           : var(--text);
-        padding         : var(--padding-tertiary);
-        cursor          : pointer;
-        transition      : color 250ms var(--transition), background 250ms var(--transition);
+    .backButton {
+        display : none;
+    }
+}
 
-        @include breakpoints.up(desktop) {
+.nav {
+    display        : none;
+    position       : absolute;
+    top            : 100%;
+    left           : 0;
+    right          : 0;
+    flex-direction : column;
+    background     : var(--bg);
+    border-bottom  : 1px solid var(--border);
+    padding        : var(--padding-tertiary);
+    gap            : var(--gap-tertiary);
+    z-index        : 998;
+    transition     : background 250ms var(--transition),
+    border-color 250ms var(--transition);
 
-            &:hover {
-                color : var(--text-active);
-            }
+    &.open {
+        display : flex;
+    }
+
+    @include breakpoints.up(desktop) {
+        display        : flex;
+        position       : static;
+        flex-direction : row;
+        background     : none;
+        border-bottom  : none;
+        padding        : 0;
+        gap            : var(--gap-primary);
+    }
+}
+
+.link {
+    all           : unset;
+    color         : var(--text);
+    font-size     : var(--font-size-secondary);
+    font-weight   : 600;
+    cursor        : pointer;
+    padding       : var(--padding-tertiary);
+    border-radius : var(--radius-primary);
+    transition    : background 250ms var(--transition), color 250ms var(--transition);
+
+    @include breakpoints.up(desktop) {
+        &:hover {
+            color : var(--text-active);
+        }
+    }
+}
+
+.active {
+    color      : var(--text-active);
+    background : var(--border);
+}
+
+.controls {
+    display     : flex;
+    align-items : center;
+    gap         : var(--gap-tertiary);
+    margin-left : auto;
+}
+
+.theme_button {
+    all             : unset;
+    display         : flex;
+    align-items     : center;
+    justify-content : center;
+    color           : var(--text);
+    padding         : var(--padding-tertiary);
+    background      : var(--border);
+    border-radius   : var(--radius-primary);
+    cursor          : pointer;
+    transition      : color 250ms var(--transition), background 250ms var(--transition);
+
+    @include breakpoints.up(desktop) {
+        &:hover {
+            color : var(--text-active);
         }
     }
 }

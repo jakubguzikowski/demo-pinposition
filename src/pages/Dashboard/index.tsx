@@ -5,7 +5,6 @@ import {
   getSectionNextChange
 } from "../../hooks/useSections";
 import { useTournamentContext } from "../../context/TournamentContext";
-import { greens } from "../../data/greens";
 import { Link } from "react-router-dom";
 import { useEffect, useState, useMemo } from "react";
 import { formatDate, formatCountdown } from "../../utils/timeUtils";
@@ -30,7 +29,6 @@ export default function Dashboard() {
     return d.getTime();
   }, []);
 
-  // przetwórz daty raz dla wszystkich turniejów
   const processed = useMemo(
     () =>
       tournaments.map((t) => ({
@@ -65,14 +63,6 @@ export default function Dashboard() {
   return (
     <main className={styles.page}>
       <div className={styles.list}>
-        <p className={styles.title}>Greens</p>
-        <div className={styles.item}>
-          <p>Greens count:</p>
-          <p>{greens.length}</p>
-        </div>
-      </div>
-
-      <div className={styles.list}>
         <p className={styles.title}>Sections</p>
         <div className={styles.item}>
           <p>Available:</p>
@@ -99,9 +89,18 @@ export default function Dashboard() {
           {currentTournaments.length > 0 ? (
             <div className={styles.values}>
               {currentTournaments.map((t) => (
-                <Link key={t.id} className="goto" to={`/tournaments/${t.id}`}>
-                  {t.name}
-                </Link>
+                <div key={t.id} className={styles.values}>
+                  <p>{t.name}</p>
+                  <p>
+                    <span className={styles.desc}>From</span> {t.startDate}
+                  </p>
+                  <p>
+                    <span className={styles.desc}>To</span> {t.endDate}
+                  </p>
+                  <Link className="goto" to={`/tournaments/${t.id}`}>
+                    Check pins
+                  </Link>
+                </div>
               ))}
             </div>
           ) : (
@@ -137,7 +136,7 @@ export default function Dashboard() {
           )}
         </div>
         <div className={styles.item}>
-          <p>Last active:</p>
+          <p>History:</p>
           {lastActiveTournament ? (
             <div className={styles.values}>
               <p>{lastActiveTournament.name}</p>
@@ -159,22 +158,6 @@ export default function Dashboard() {
           ) : (
             <p>No past tournaments</p>
           )}
-        </div>
-      </div>
-
-      <div className={styles.list}>
-        <p className={styles.title}>Features</p>
-        <div className={styles.item}>
-          <p>Implemented:</p>
-          <p>1</p>
-        </div>
-        <div className={styles.item}>
-          <p>In progress:</p>
-          <p>2</p>
-        </div>
-        <div className={styles.item}>
-          <p>Suggested:</p>
-          <p>3</p>
         </div>
       </div>
     </main>

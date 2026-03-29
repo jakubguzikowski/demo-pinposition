@@ -1,5 +1,5 @@
 import styles from "./index.module.scss";
-import { useParams } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useTournamentContext } from "../../../context/TournamentContext";
 import { greens } from "../../../data/greens";
 import CardsRow from "../../../components/CardsRow";
@@ -8,7 +8,8 @@ import GreenWithPin from "../../../components/GreenWithPin";
 
 export default function TournamentDetail() {
   const { id } = useParams<{ id: string }>();
-  const { tournaments } = useTournamentContext();
+  const { tournaments, remove } = useTournamentContext();
+  const navigate = useNavigate();
 
   const tournament = tournaments.find((t) => t.id === id);
 
@@ -22,6 +23,11 @@ export default function TournamentDetail() {
     );
   }
 
+  const handleRemove = () => {
+    remove(tournament.id);
+    navigate("/tournaments");
+  };
+
   return (
     <main className={styles.page}>
       <div className={styles.heading}>
@@ -30,6 +36,14 @@ export default function TournamentDetail() {
           <p className="paragraph">
             {tournament.startDate} — {tournament.endDate}
           </p>
+        </div>
+        <div className={styles.heading_actions}>
+          <Link className={styles.action} to={`/tournaments/${id}/edit`}>
+            Edit
+          </Link>
+          <button className={styles.action} onClick={handleRemove}>
+            Remove
+          </button>
         </div>
       </div>
 

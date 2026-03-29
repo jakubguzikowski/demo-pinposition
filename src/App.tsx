@@ -4,8 +4,8 @@ import Layout from "./components/Layout";
 import Dashboard from "./pages/Dashboard";
 import Greens from "./pages/Greens";
 import Tournaments from "./pages/Tournaments";
-import Features from "./pages/Features";
 import TournamentCreate from "./pages/Tournaments/TournamentCreate";
+import TournamentEdit from "./pages/Tournaments/TournamentEdit";
 import TournamentDetail from "./pages/Tournaments/TournamentDetail";
 
 function App() {
@@ -15,9 +15,9 @@ function App() {
         <Route path="/" element={<Dashboard />} />
         <Route path="/greens" element={<Greens />} />
         <Route path="/tournaments" element={<Tournaments />} />
-        <Route path="/features" element={<Features />} />
         <Route path="/tournaments/create" element={<TournamentCreate />} />
         <Route path="/tournaments/:id" element={<TournamentDetail />} />
+        <Route path="/tournaments/:id/edit" element={<TournamentEdit />} />
       </Route>
     </Routes>
   );

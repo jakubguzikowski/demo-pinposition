@@ -59,7 +59,12 @@
                 transition : color 250ms var(--transition);
             }
 
-            .remove {
+            .item_actions {
+                display : flex;
+                gap     : var(--gap-tertiary);
+            }
+
+            .action {
                 all           : unset;
                 font-size     : var(--font-size-secondary);
                 color         : var(--text);

@@ -10,7 +10,8 @@
             @include shared.svg;
 
             path {
-                cursor  : crosshair;
+                pointer-events : fill; // ← dodaj tę linię
+                cursor         : crosshair;
             }
 
             circle {

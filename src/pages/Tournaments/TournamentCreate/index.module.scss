@@ -5,16 +5,13 @@
     flex-direction : column;
 
     .actions {
-        position      : sticky;
-        top           : -1px;
-        display       : flex;
-        gap           : var(--gap-secondary);
-        padding       : var(--padding-tertiary);
-        border-top    : 1px solid var(--border);
-        border-bottom : 1px solid var(--border);
-        background    : var(--bg);
-        transition    : border-color 250ms var(--transition), background 250ms var(--transition);
-        z-index       : 999;
+        margin-top : var(--gap-primary);
+        display    : flex;
+        gap        : var(--gap-secondary);
+        padding    : var(--padding-tertiary);
+        border-top : 1px solid var(--border);
+        background : var(--bg);
+        transition : border-color 250ms var(--transition), background 250ms var(--transition);
 
         button {
             all           : unset;

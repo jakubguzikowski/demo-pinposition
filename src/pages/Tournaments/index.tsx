@@ -27,12 +27,14 @@ export default function Tournaments() {
               <p className={styles.name}>{t.name}</p>
               <p className={styles.dates}>{t.startDate} — {t.endDate}</p>
             </Link>
-            <button
-              className={styles.remove}
-              onClick={() => remove(t.id)}
-            >
-              Remove
-            </button>
+            <div className={styles.item_actions}>
+              <Link className={styles.action} to={`/tournaments/${t.id}/edit`}>
+                Edit
+              </Link>
+              <button className={styles.action} onClick={() => remove(t.id)}>
+                Remove
+              </button>
+            </div>
           </div>
         ))}
       </div>

@@ -26,6 +26,27 @@
             flex-direction : column;
             gap            : var(--gap-tertiary);
         }
+
+        .heading_actions {
+            display : flex;
+            gap     : var(--gap-tertiary);
+        }
+
+        .action {
+            all           : unset;
+            font-size     : var(--font-size-secondary);
+            color         : var(--text);
+            cursor        : pointer;
+            padding       : var(--padding-tertiary);
+            background    : var(--border);
+            border-radius : var(--radius-primary);
+            transition    : color 250ms var(--transition),
+            background 250ms var(--transition);
+
+            &:hover {
+                color : var(--text-active);
+            }
+        }
     }
 }
 

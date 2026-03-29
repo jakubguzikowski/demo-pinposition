@@ -5,6 +5,7 @@ import { useTournaments } from "../hooks/useTournaments";
 interface TournamentContextType {
   tournaments: Tournament[];
   add: (t: Tournament) => boolean;
+  update: (t: Tournament) => boolean;
   remove: (id: string) => void;
 }
 
@@ -15,10 +16,10 @@ export function TournamentProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const { tournaments, add, remove } = useTournaments();
+  const { tournaments, add, update, remove } = useTournaments();
 
   return (
-    <TournamentContext.Provider value={{ tournaments, add, remove }}>
+    <TournamentContext.Provider value={{ tournaments, add, update, remove }}>
       {children}
     </TournamentContext.Provider>
   );

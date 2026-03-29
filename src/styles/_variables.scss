@@ -38,6 +38,7 @@
     // Kolory semantyczne (co robią)
     --bg                   : var(--light-bg-primary);
     --bg-input             : var(--light-bg-quartiary);
+    --bg-elevated          : var(--light-bg-tertiary);
     --border               : var(--light-bg-secondary);
     --text                 : var(--light-text-primary);
     --text-active          : var(--light-text-secondary);
@@ -47,6 +48,7 @@
 [data-theme="dark"] {
     --bg          : var(--dark-bg-primary);
     --bg-input    : var(--dark-bg-quartiary);
+    --bg-elevated : var(--dark-bg-tertiary);
     --border      : var(--dark-bg-secondary);
     --text        : var(--dark-text-primary);
     --text-active : var(--dark-text-secondary);
