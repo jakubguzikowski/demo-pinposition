@@ -4,8 +4,9 @@ A demo frontend application for managing golf green pin positions across tournam
 
 Built with React, TypeScript, and Vite — no backend, no database. All state lives in the browser.
 
----
+<img width="1036" height="757" alt="create" src="https://github.com/user-attachments/assets/d41aa4e3-f1b5-4f00-9221-9174a939abbb" />
 
+---
 ## Features
 
 - **Dashboard** — live overview of the active green section and current / upcoming / past tournaments with a real-time countdown to the next section rotation
@@ -109,3 +110,12 @@ The SVG diagrams for all 18 greens were hand-drawn based on aerial drone photogr
 The active section (A, B, or C) is derived from the ISO week number modulo 3 — no configuration needed. Each green also has a fixed section mapping (which tee positions belong to which section), so the app always knows which pin locations are in play this week.
 
 Section changes happen automatically every Monday and a live countdown on the Dashboard shows time remaining until the next rotation.
+
+---
+## Screenshots
+
+<img width="1036" height="325" alt="dashboard" src="https://github.com/user-attachments/assets/5914d93b-d8f6-438e-a169-9f3a43f4eaa4" />
+
+<img width="1036" height="833" alt="greens" src="https://github.com/user-attachments/assets/04d7afed-b983-4cf2-a4ba-f5e8121a2652" />
+
+<img width="1036" height="580" alt="tournament" src="https://github.com/user-attachments/assets/02823a81-ce7a-48b1-a48d-1c8628345934" />
