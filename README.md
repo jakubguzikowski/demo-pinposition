@@ -119,3 +119,14 @@ Section changes happen automatically every Monday and a live countdown on the Da
 <img width="1036" height="833" alt="greens" src="https://github.com/user-attachments/assets/04d7afed-b983-4cf2-a4ba-f5e8121a2652" />
 
 <img width="1036" height="580" alt="tournament" src="https://github.com/user-attachments/assets/02823a81-ce7a-48b1-a48d-1c8628345934" />
+
+---
+
+## Contact
+
+Interested in working together or want to see more?  
+Check out my other projects or get in touch.
+
+- jakubguzikowski.dev
+- contact@jakubguzikowski.dev
+- linkedin.com/in/jakubguzikowski
