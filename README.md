@@ -11,12 +11,11 @@ Built with React, TypeScript, and Vite — no backend, no database. All state li
 ---
 ## Features
 
-- **Dashboard** — live overview of the active green section and current / upcoming / past tournaments with a real-time countdown to the next section rotation
-- **Greens** — browse all 18 greens with SVG diagrams; see which pin section (A / B / C) is active this week per green
-- **Tournaments** — create, edit, and remove tournaments; set pin positions per green by clicking directly on SVG maps
-- **Section rotation** — active section is derived automatically from the ISO week number (cycles A → B → C weekly)
-- **Dark / light theme** — persisted in `localStorage`, applied before first paint to avoid flash
-- **Responsive layout** — works on desktop and tablet
+- Create, edit, and delete tournaments, each with individual start and end dates
+- Add and modify pins related to specific green within each tournament
+- Map-based visualization of pinned locations
+- Basic interactive UI for tournament and pin management
+- Local data storage for tournaments and pins
 
 ---
 
@@ -38,16 +37,15 @@ Built with React, TypeScript, and Vite — no backend, no database. All state li
 ```bash
 # 1. Clone the repository
 git clone https://github.com/jakubguzikowski/demo-pinposition.git
-cd demo-pinposition
 
 # 2. Install dependencies
 npm install
 
 # 3. Start the dev server
 npm run dev
-```
 
-The app will be available at `http://localhost:5173` (or the next available port).
+# 4. Open http://localhost:5173 in your browser
+```
 
 ---
 
@@ -59,45 +57,6 @@ The app will be available at `http://localhost:5173` (or the next available port
 | `npm run build` | Type-check and build for production |
 | `npm run preview` | Preview the production build locally |
 | `npm run lint` | Run ESLint |
-
----
-
-## Project Structure
-
-```
-src/
-├── assets/greens/     # SVG green diagrams (imported as React components)
-├── components/        # Shared UI components (Card, CardsRow, GreenWithPin, DatePicker, Popup…)
-├── context/           # TournamentContext — global tournament state
-├── data/              # Static green definitions (id, name, dimensions)
-├── hooks/             # useGreens, useSections, useTournaments
-├── pages/             # Dashboard, Greens, Tournaments (+ Create / Edit / Detail)
-├── styles/            # Global SCSS (tokens, reset, typography)
-├── types/             # TypeScript interfaces (Tournament, PinPosition)
-└── utils/             # Date formatting and countdown helpers
-```
-
----
-
-## Data Model
-
-```ts
-interface Tournament {
-  id: string;
-  name: string;
-  startDate: string;    // "YYYY-MM-DD"
-  endDate: string;
-  createdAt: string;
-  pins: (PinPosition | null)[];  // one entry per green (index 0 = Green 1)
-}
-
-interface PinPosition {
-  x: number;     // relative X on the SVG canvas
-  y: number;     // relative Y on the SVG canvas
-  posX: string;  // human-readable label, e.g. "Left"
-  posY: string;  // human-readable label, e.g. "Back"
-}
-```
 
 ---
 
