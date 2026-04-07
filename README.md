@@ -1,8 +1,10 @@
 # Pin Position
 
 A demo frontend application for managing golf green pin positions across tournaments.
-
 Built with React, TypeScript, and Vite — no backend, no database. All state lives in the browser.
+
+> ⚠️ Note: The current UI is a simplified MVP version.  
+> A redesigned, polished interface is currently in progress.
 
 <img width="1036" height="757" alt="create" src="https://github.com/user-attachments/assets/d41aa4e3-f1b5-4f00-9221-9174a939abbb" />
 
